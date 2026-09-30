@@ -1,1 +1,4 @@
-Première version sur F-Droid.
+• Correctif important : la bille ne prenait plus les couleurs peintes au doigt en roulant dessus
+• Mélangeur de couleurs adapté à tous les écrans (taille calculée, plus de débordement)
+• Tap simple sur Effets/Formes/Gomme active directement le dernier outil utilisé (2e tap pour changer)
+• Sélecteur de couleur recalculé correctement en changeant de mode

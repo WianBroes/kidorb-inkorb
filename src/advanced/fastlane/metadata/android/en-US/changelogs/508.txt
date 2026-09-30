@@ -1,1 +1,4 @@
-First release on F-Droid.
+• Important fix: the ball stopped picking up hand-painted colors when rolling over them
+• Color mixer now adapts to any screen size (measured, no more overflow)
+• Single tap on Effects/Shapes/Eraser now activates the last used tool directly (2nd tap to change)
+• Color picker resizes correctly when switching modes
