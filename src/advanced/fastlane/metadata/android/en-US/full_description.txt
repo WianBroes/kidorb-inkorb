@@ -1,0 +1,16 @@
+InkOrb is a physics-based ball painting studio: instead of a regular brush, a ball rolls across the canvas and leaves a trail of paint behind it, precise or chaotic depending on speed and gesture.
+
+Features:
+• Regular brush and pencil, alongside physics balls
+• Draw your own obstacles, place planets (with gravity) and portals: the ball goes in one and comes out the other
+• Create custom balls, in addition to the built-in ones (comet, rainbow, bouncy...), each with its own trail and fade settings
+• Gyroscope: tilt your phone to guide the ball
+• Layers, selection, eraser, undo/redo
+• Pigment mixer (OKLCh color wheel) to compose your own colors instead of picking from a fixed palette
+• Export your artwork as an image
+• Built-in kid mode: switch to KidOrb in one tap for a stripped-down version made for young children
+• Interface available in English and French
+
+No ads, no accounts, no network connection: InkOrb runs fully offline and collects no usage data.
+
+InkOrb is the full edition of the same engine as KidOrb (physics-based ball painting), without the limitations made for young children: every tool, obstacle, planet, portal and the gyroscope are available from the first launch.

@@ -1,0 +1,16 @@
+InkOrb est un atelier de peinture par bille physique : au lieu d'un pinceau classique, une bille roule sur la toile et laisse une traînée de peinture derrière elle, précise ou chaotique selon la vitesse et la trajectoire du geste.
+
+Fonctionnalités :
+• Pinceau et crayon classiques, en plus des billes physiques
+• Dessine tes propres obstacles, place des planètes (avec gravité) et des portails : la bille entre par l'un et ressort par l'autre
+• Crée de nouvelles billes personnalisées, en plus des billes prédéfinies (comète, arc-en-ciel, rebondissante...), chacune avec ses réglages de traînée et de fondu
+• Gyroscope : incline ton téléphone pour guider la bille
+• Calques, sélection, gomme, annuler/rétablir
+• Mélangeur de pigments (roue de teintes façon OKLCh) pour composer ses propres couleurs plutôt que choisir dans une palette figée
+• Export de l'œuvre en image
+• Mode enfant intégré : bascule vers KidOrb en un geste pour une version épurée, pensée pour les tout-petits
+• Interface disponible en français et en anglais
+
+Aucune publicité, aucun compte, aucune connexion réseau : InkOrb fonctionne intégralement hors-ligne et ne collecte aucune donnée d'utilisation.
+
+InkOrb est l'édition complète du même moteur que KidOrb (peinture par bille physique), sans les limitations pensées pour les jeunes enfants : tous les outils, obstacles, planètes, portails et le gyroscope sont disponibles dès le premier lancement.
