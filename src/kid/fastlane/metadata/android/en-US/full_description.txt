@@ -1,12 +1,12 @@
-KidOrb is a drawing app made for children: a ball rolls across the screen and leaves a trail of colour behind it, like a ball dipped in paint. Simple, with no complicated text, no levels to unlock and no pressure.
+KidOrb is a drawing app made for children: a ball rolls across the screen and leaves a trail of color behind it, like a ball dipped in paint. Simple, with no complicated text, no levels to unlock and no pressure.
 
 What you can do:
-• Roll the ball with a fingertip and watch the colour trail appear
-• Pick a colour from the rainbow and draw at your own pace
+• Roll the ball with a fingertip and watch the color trail appear
+• Pick a color from the rainbow and draw at your own pace
 • Brush, eraser, and several balls to unlock depending on your mood
 • Locked zoom to stay focused on the drawing, not on the settings
 • Export the finished drawing to keep it or print it
 
 No ads. No account to create. No internet connection needed: KidOrb works entirely offline and collects no data.
 
-Made by a parent to keep children busy with a simple, satisfying gesture: roll a ball and watch the colours appear.
+Made by a parent to keep children busy with a simple, satisfying gesture: roll a ball and watch the colors appear.
