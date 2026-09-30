@@ -1,1 +1,1 @@
-Physics-based ball painting: layers, pigment mixing, export.
+Physical ball painting: layers, pigment mixing, export.
