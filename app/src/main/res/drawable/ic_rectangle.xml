@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : rectangle — même principe que ic_triangle/ic_bouchon (2026-08-11) :
+     reste blanc, fin liseré vert à l'EXTÉRIEUR de la forme, même vert
+     #FF00E676. Pas de android:tint (écraserait le vert). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FF00E676"
+        android:strokeWidth="1.2"
+        android:pathData="M3.2,5.2L20.8,5.2L20.8,18.8L3.2,18.8Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M4,6L20,6L20,18L4,18Z" />
+</vector>

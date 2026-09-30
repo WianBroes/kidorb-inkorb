@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône concept bille : comète arc-en-ciel — même silhouette que
+     ic_bille_comete (disque + traîne effilée), traîne recolorée en bandes
+     arc-en-ciel (violet→bleu→vert→jaune→rouge) au lieu du bleu uni.
+     2026-09-01, retour direct : "la comete arc en ciel devrait avoir la
+     bille qui a l'icone de l'arc en ciel mais avec une trainée" — tête
+     remplacée par la même roue 6 couleurs que ic_bille_arcenciel (au lieu
+     d'un disque rouge uni).
+     2026-09-01, retour direct #2 : "il faut redescendre le disque arc en
+     ciel, il est pas dans l'axe de la trainée" — 1ère passe avait pris le
+     point M de l'ancien cercle ("M18,8a4,4…") pour son CENTRE, alors que
+     dans ce fichier (même convention que ic_balle.xml, "M12,3a9,9…" =
+     sommet HAUT d'un cercle centré en (12,12)) ce M est le sommet haut du
+     cercle — le vrai centre de la tête est (18, 8+4)=(18,12), sur l'axe de
+     la traîne (toutes ses bandes convergent en y=12), pas (18,8). Les 6
+     tranches recalculées avec ce centre (rayon inchangé, mêmes angles
+     0/60/120/180/240/300°, mêmes couleurs/ordre de teinte que
+     ic_bille_arcenciel) ; le dégradé de volume ci-dessous utilisait déjà
+     la bonne convention ("M18,8a4,4…" = sommet haut → centre (18,12)).
+     2026-09-01, retour direct #3 : "toutes les pastilles ont pas la meme
+     taille, ya balle et comete qui sont different" — même correctif que
+     ic_bille_comete.xml : tête agrandie 4→7 (rayon de rebondissante,
+     22%→58% du cadre 24×24), recentrée (16,12), 6 tranches + dégradé
+     recalculés sur ce nouveau centre/rayon, points de traîne les plus
+     proches de la tête (x=18) rapprochés à x=16 (l'extrémité large ne
+     bouge pas).
+     2026-09-01, retour direct #4 : "ca marche pour la bille mais pas pour
+     la trainée" — vérifié sur capture zoomée (adb screencap) avant de
+     corriger, même cause que ic_bille_comete.xml : bandes de traîne trop
+     transparentes (0x66 à 0x99) sur fond noir, la plus large (la plus
+     visible) la plus faible. Alphas relevés nettement.
+     2026-09-01, retour direct #5 : "la trainee est pas assez longue" —
+     même correctif que ic_bille_comete.xml : extrémités éloignées de 2
+     unités chacune (1/3.8/6.6/9.4/13 → 0/1.8/4.6/7.4/11). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path android:fillColor="#B38E24AA" android:pathData="M16,6.5 L0,12 L16,17.5 Z" />
+    <path android:fillColor="#B31E88E5" android:pathData="M16,7.7 L1.8,12 L16,16.3 Z" />
+    <path android:fillColor="#CC43A047" android:pathData="M16,8.9 L4.6,12 L16,15.1 Z" />
+    <path android:fillColor="#E6FDD835" android:pathData="M16,10.1 L7.4,12 L16,13.9 Z" />
+    <path android:fillColor="#FFFB8C00" android:pathData="M16,11 L11,12 L16,13 Z" />
+    <path android:fillColor="#FFE53935" android:pathData="M16,12 L23,12 A7,7 0 0,1 19.5,18.062 Z" />
+    <path android:fillColor="#FFFB8C00" android:pathData="M16,12 L19.5,18.062 A7,7 0 0,1 12.5,18.062 Z" />
+    <path android:fillColor="#FFFDD835" android:pathData="M16,12 L12.5,18.062 A7,7 0 0,1 9,12 Z" />
+    <path android:fillColor="#FF43A047" android:pathData="M16,12 L9,12 A7,7 0 0,1 12.5,5.938 Z" />
+    <path android:fillColor="#FF1E88E5" android:pathData="M16,12 L12.5,5.938 A7,7 0 0,1 19.5,5.938 Z" />
+    <path android:fillColor="#FF8E24AA" android:pathData="M16,12 L19.5,5.938 A7,7 0 0,1 23,12 Z" />
+    <path android:pathData="M16,5a7,7 0 1,0 0.001,0z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="13.55"
+                android:centerY="9.55"
+                android:gradientRadius="12.6"
+                android:startColor="#66FFFFFF"
+                android:endColor="#4D000000" />
+        </aapt:attr>
+    </path>
+</vector>

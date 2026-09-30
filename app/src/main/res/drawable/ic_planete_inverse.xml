@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- inverse de la Planète (2026-08-13, demande explicite : "exactement
+         le même design mais avec une autre couleur, et repousse la balle au
+         lieu de l'attirer") — mêmes tracés que ic_planete.xml, palette
+         violette remplacée par une palette orange (même poids de nuance
+         Material, famille de couleur différente) pour signaler visuellement
+         l'inversion du comportement. -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFF3E0"
+        android:strokeWidth="2.6"
+        android:pathData="M3,12.8a9,3.6 0,1 0,18 0a9,3.6 0,1 0,-18 0" />
+    <path
+        android:fillColor="#FFF4511E"
+        android:strokeColor="#FFBF360C"
+        android:strokeWidth="0.8"
+        android:pathData="M12,12m-5.3,0a5.3,5.3 0,1 1,10.6 0a5.3,5.3 0,1 1,-10.6 0" />
+    <path
+        android:fillColor="#FFFFAB91"
+        android:fillAlpha="0.7"
+        android:pathData="M9.3,8.3m-1.7,0a1.7,1.7 0,1 1,3.4 0a1.7,1.7 0,1 1,-3.4 0" />
+</vector>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône concept bille : comète + traînée — disque + traîne effilée en
+     dégradé d'alpha (3 couches), pas de tint appliqué (cf. buildBilleCell).
+     Réglage lié : cometTrail.
+     2026-08-25, même correctif que rebondissante ("encore un cercle gris") :
+     disque pâle (#F5F5F5) remplacé par une couleur pleine + le même dégradé
+     radial que les icônes arc-en-ciel/psychédélique/rebondissante.
+     2026-09-01, retour direct : "toutes les pastilles ont pas la meme
+     taille, ya balle et comete qui sont different" — la tête (rayon 4,
+     22% du cadre 24×24) restait bien plus petite que les autres icônes de
+     concept (arc-en-ciel/psychédélique : rayon 9, 75% ; rebondissante :
+     rayon 7, 58%, déjà agrandie une fois pour la même raison le 2026-08-25)
+     — le padding de buildBilleCell ne peut PAS compenser ça (il réduit
+     UNIFORMÉMENT tout le cadre 24×24, tête et traîne ensemble, jamais
+     seulement la tête). Tête agrandie 4→7 (même rayon que rebondissante,
+     déjà validé), recentrée (16,12, garde l'axe y=12 de la traîne), les
+     points de traîne les plus proches de la tête (x=18) rapprochés à x=16
+     en conséquence — l'extrémité large de la traîne ne bouge pas.
+     2026-09-01, retour direct : "ca marche pour la bille mais pas pour la
+     trainée" — vérifié sur capture zoomée (adb screencap) avant de
+     corriger : la traîne existait bien géométriquement, mais sa bande la
+     PLUS LARGE (donc la plus visible, la seule qui dépasse vraiment à
+     gauche de la tête) était aussi la MOINS opaque (#33 = 20%), sur fond
+     noir — quasi invisible. Alphas relevés nettement (0x33/0x66/0xB3 →
+     0x80/0xB3/0xFF).
+     2026-09-01, retour direct : "la trainee est pas assez longue" — en
+     rapprochant la tête (18→16) sans toucher l'extrémité large, la traîne
+     avait perdu 2 unités de portée (16 vs 18 avant). Extrémités éloignées
+     davantage (2/6/11 → 0/4/9), plus longue qu'avant l'agrandissement de
+     la tête, pas juste restaurée. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path android:fillColor="#80B3E5FC" android:pathData="M16,7 L0,12 L16,17 Z" />
+    <path android:fillColor="#B3B3E5FC" android:pathData="M16,8.5 L4,12 L16,15.5 Z" />
+    <path android:fillColor="#FFB3E5FC" android:pathData="M16,10 L9,12 L16,14 Z" />
+    <path android:fillColor="#FF29B6F6" android:pathData="M16,5a7,7 0 1,0 0.001,0z" />
+    <path android:pathData="M16,5a7,7 0 1,0 0.001,0z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="13.55"
+                android:centerY="9.55"
+                android:gradientRadius="12.6"
+                android:startColor="#66FFFFFF"
+                android:endColor="#4D000000" />
+        </aapt:attr>
+    </path>
+</vector>

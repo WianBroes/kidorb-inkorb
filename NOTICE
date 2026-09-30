@@ -1,0 +1,9 @@
+Composants tiers
+
+1. Spectral.js (portage Kotlin dans app/src/main/java/com/wian/kidorb/PigmentMix.kt)
+   Copyright (c) 2025 Ronald van Wijnen
+   Licence MIT — https://github.com/rvanwijnen/spectral.js
+   Texte : https://raw.githubusercontent.com/rvanwijnen/spectral.js/master/LICENSE
+
+2. AndroidX (constraintlayout, appcompat) — Apache License 2.0
+   Liés à la compilation, non inclus dans ce dépôt.

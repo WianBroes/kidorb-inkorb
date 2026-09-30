@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- planète avec anneau (2026-08-13, demande explicite : "l'icône de la
+         planète n'est pas vraiment reconnaissable" — corps et anneau étaient
+         deux nuances de violet trop proches, l'anneau se fondait dans le
+         corps à la taille d'une icône de barre d'outils). Anneau plus épais
+         et bien plus clair (fort contraste), corps plus saturé avec un
+         liseré sombre pour une silhouette nette, petit reflet clair pour
+         suggérer le volume d'une sphère plutôt qu'un disque plat. -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFF3E5F5"
+        android:strokeWidth="2.6"
+        android:pathData="M3,12.8a9,3.6 0,1 0,18 0a9,3.6 0,1 0,-18 0" />
+    <path
+        android:fillColor="#FF8E24AA"
+        android:strokeColor="#FF4A148C"
+        android:strokeWidth="0.8"
+        android:pathData="M12,12m-5.3,0a5.3,5.3 0,1 1,10.6 0a5.3,5.3 0,1 1,-10.6 0" />
+    <path
+        android:fillColor="#FFCE93D8"
+        android:fillAlpha="0.7"
+        android:pathData="M9.3,8.3m-1.7,0a1.7,1.7 0,1 1,3.4 0a1.7,1.7 0,1 1,-3.4 0" />
+</vector>

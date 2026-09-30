@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : triangle (flipper) — reste blanc, fin liseré vert à
+     l'EXTÉRIEUR de la forme (2026-08-11, demande explicite, même principe
+     que Bouchon/Ligne/Mur, même vert #FF00E676). Pas de android:tint
+     (écraserait le vert). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FF00E676"
+        android:strokeWidth="1.2"
+        android:strokeLineJoin="round"
+        android:pathData="M12,1.56L22.08,21.72L1.92,21.72Z" />
+    <!-- triangle pointe vers le haut (flipper) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,3l9,18H3z" />
+</vector>

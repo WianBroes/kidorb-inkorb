@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : pinceau — tracé repris tel quel de
+     svgrepo.com/download/267973/paint-brush-art.svg (2026-08-11, lien
+     fourni directement par l'utilisateur), retinté en blanc. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512"
+    android:tint="#FFFFFF">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M508.434,17.784c-29.932-29.932-221.952,135.598-320.098,231.702l88.383,88.383 C372.824,239.725,538.366,47.716,508.434,17.784z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M166.239,274.614c-9.594,12.837-23.847,32.658-33.329,49.239l69.454,69.454c16.579-9.484,36.396-23.739,49.231-33.337 L166.239,274.614z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M106.101,344.264c-14.395,1.825-28.317,8.255-39.372,19.31C28.196,402.108,48.364,431.764,0,497.783 c0,0,127.405-3.055,162.643-38.294c11.055-11.055,17.485-24.976,19.31-39.371L106.101,344.264z" />
+</vector>

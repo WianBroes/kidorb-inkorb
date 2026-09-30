@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KidOrb</string>
+
+    <!-- tabs -->
+    <string name="tab_export">File</string>
+    <string name="tab_settings">Settings</string>
+    <string name="tab_bille_setup">Balls</string>
+    <string name="tab_pinceau_setup">Brushes</string>
+
+    <!-- drag-resize labels -->
+    <string name="label_ball">Ball</string>
+    <string name="label_trail">Trail</string>
+    <string name="label_eraser">Eraser</string>
+
+    <string name="toast_obstacles_cleared">Obstacles cleared</string>
+
+    <!-- palette panel -->
+    <string name="palette_hint">Pick a color, then tap a swatch to add it</string>
+    <string name="palette_title">Palette</string>
+    <string name="mixer_title">Mixer</string>
+    <string name="slider_hue">Hue</string>
+    <string name="slider_saturation">Saturation</string>
+    <string name="mixer_ready_hint">✓ Ready — tap a swatch (empty or full) to add it</string>
+    <string name="background_title">Background</string>
+    <plurals name="palette_empty_slots">
+        <item quantity="one">Palette — %d empty slot</item>
+        <item quantity="other">Palette — %d empty slots</item>
+    </plurals>
+
+    <!-- settings panel -->
+    <string name="slider_tilt_sensitivity">Tilt sensitivity</string>
+    <string name="slider_bounce">Bounce</string>
+    <string name="slider_weight">Weight</string>
+    <string name="slider_friction">Friction</string>
+    <string name="slider_trail_texture">Trail texture (0 = crisp)</string>
+    <string name="blend_fade_title">Blend fade</string>
+    <string name="slider_fondu_rate">Fade speed (raw value)</string>
+    <string name="preset_crisp">Crisp</string>
+    <string name="preset_soft">Soft</string>
+    <string name="preset_very_soft">Very soft</string>
+    <string name="preset_extreme_soft">Extreme</string>
+    <string name="slider_shake_threshold">Shake (threshold)</string>
+    <string name="slider_shake_force">Shake (force)</string>
+    <string name="toggle_speed_thickness">Speed = thickness</string>
+    <string name="label_trail_edge_mode">Trail edge</string>
+    <string name="trail_edge_dur">Hard</string>
+    <string name="trail_edge_doux">Soft</string>
+    <string name="trail_edge_net">Crisp + smooth</string>
+    <string name="hint_trail_edge_mode">Hard: flat stamps, can show visible arcs where the color changes. Soft: each stamp fades to transparent at its edge — smooths color changes, but also softens the whole trail\'s outer outline. Crisp + smooth: stays fully opaque everywhere (sharp outer outline, like Hard) while still blending the color between stamps.</string>
+    <string name="toggle_comet_trail">Comet trail (shrinks a lot with speed)</string>
+    <string name="toggle_rainbow_ball">Rainbow ball</string>
+    <string name="toggle_speed_color">Speed-based color (atmospheric reentry)</string>
+    <string name="toggle_tilt_curve">Amplified tilt (squared curve)</string>
+    <string name="toggle_ball_volume">Volume effect (light/shadow gradient)</string>
+    <string name="toggle_screen_bounds">Screen bounds</string>
+    <string name="toggle_edge_wrap">Edge teleport</string>
+    <string name="toggle_ball_visible">Ball visible</string>
+    <string name="toggle_ball_grab_pinceau">Touching the ball pushes/ejects it (free draw mode)</string>
+    <string name="tab_param_interface">Interface</string>
+    <string name="tab_param_mode_kid">Advanced mode</string>
+    <string name="tab_param_outils">Tools</string>
+    <string name="hint_outils_defaults">Default values applied when a new object is CREATED — only size stays adjustable afterward (existing handle), to keep it readable in use.</string>
+    <string name="label_planete_mass">Planet — default gravity</string>
+    <string name="label_planete_inverse_mass">Anti-planet — default repulsion</string>
+    <string name="label_accelerateur_gauge">Accelerator — default gauge</string>
+    <string name="slider_gravite">Gravity</string>
+    <string name="slider_jauge">Gauge</string>
+    <string name="toggle_planete_cancel_tilt">Cancel phone gravity while orbiting</string>
+    <string name="hint_planete_cancel_tilt">While the ball is within a planet\'s range (attracting or repelling), phone tilt no longer has any effect — only the planet\'s gravity counts, for a cleaner orbit.</string>
+    <string name="section_title_outils">Visible tools</string>
+    <string name="toggle_category_all">All %1$s</string>
+    <string name="section_shapes">Shapes</string>
+    <string name="section_effects">Effects</string>
+    <string name="section_other_tools">Other tools</string>
+    <string name="section_pinceaux">Brushes</string>
+    <string name="toggle_app_lock">Lock the app (screen pinning)</string>
+    <string name="hint_app_lock">Blocks Home/Recents and limits notification access while active. To unlock: use this switch, or the system unpin gesture (hold Back + Recents).</string>
+    <string name="toggle_zoom_lock">Lock zoom (canvas always fills the screen, export too)</string>
+    <string name="toggle_usage_log">Enable diagnostic logs</string>
+    <string name="hint_usage_log">Writes a log file to Downloads and to logcat. Turn off before handing the app to someone else.</string>
+    <string name="label_canvas_quality">Canvas quality</string>
+    <string name="canvas_quality_normal">Normal (2×)</string>
+    <string name="canvas_quality_perf">Performance (1.4×)</string>
+    <string name="hint_canvas_quality">Performance uses less memory and reduces lag on slower phones, but leaves less room to zoom out beyond the visible page. No effect in kid mode (zoom is already locked there).</string>
+    <string name="label_melange_experiment">Color mixing (experimental)</string>
+    <string name="melange_experiment_off">Off</string>
+    <string name="melange_experiment_protection">Anti-revert protection</string>
+    <string name="melange_experiment_rayon">Tighter radius</string>
+    <string name="melange_experiment_retour_lent">Slower revert</string>
+    <string name="hint_melange_experiment">The ball keeps falling back into the screen\'s dominant color as soon as it touches it again. 3 approaches to compare in real use, none settled yet: Protection ignores the color just left for a short while, Tighter radius makes the ball less sensitive to its surroundings, Slower revert only slows the pull back toward the color just left. Off = current behavior, unchanged.</string>
+    <string name="label_tilt_response_experiment">Tilt response (experimental)</string>
+    <string name="tilt_response_current">Current</string>
+    <string name="tilt_response_lineaire">Linear</string>
+    <string name="tilt_response_adouci">Softened</string>
+    <string name="hint_tilt_response_experiment">External tester feedback: the ball feels slow and heavy to get moving. The default ball\'s squared tilt curve barely responds to a normal tilt. 2 approaches to compare in real use: Linear reacts immediately to any tilt (ignores each ball\'s squared-curve setting), Softened keeps the progressive feel but far less flattened at everyday tilt angles. Current = today\'s behavior (respects each ball\'s own setting), unchanged.</string>
+    <string name="label_mix_vivid_experiment">Color mixing vividness (experimental)</string>
+    <string name="mix_vivid_current">Current</string>
+    <string name="mix_vivid_chroma">Boosted chroma</string>
+    <string name="mix_vivid_teinte">Hue blend</string>
+    <string name="hint_mix_vivid_experiment">The realistic pigment mixing (Kubelka-Munk) can turn muddy brown on complementary colors, like real paint does. 2 approaches to compare in real use: Boosted chroma keeps the same mix but pushes saturation back up afterward, Hue blend drops realism entirely for a pure hue fade (never brown, but no longer "real paint"). Current = today\'s behavior, unchanged.</string>
+    <string name="toggle_dev_mode">Advanced mode</string>
+    <string name="toggle_interface_edit_visible">Show interface settings without advanced mode (this profile)</string>
+    <string name="label_config_profil">Mode</string>
+    <string name="btn_delete_profil">Delete this profile</string>
+    <string name="preset_taille_fin">Thin</string>
+    <string name="preset_taille_moyen">Medium</string>
+    <string name="preset_taille_epais">Thick</string>
+    <string name="preset_taille_tres_epais">Very thick</string>
+    <string name="hint_mode_kid_actif">Validates this mode for the child: the settings below apply to their dedicated configuration, separate from normal mode.</string>
+    <string name="label_picker_type">Picker type</string>
+    <string name="preset_picker_pastille">Swatches</string>
+    <string name="preset_picker_pad">Gradient</string>
+    <string name="preset_picker_wheel">Wheel</string>
+    <string name="preset_picker_joystick">Joystick</string>
+    <string name="preset_picker_simple">Simple</string>
+    <string name="slider_wheel_size">Wheel size</string>
+    <string name="settings_title">Settings</string>
+    <string name="slider_side_menu_size">Side menu size</string>
+    <string name="slider_edge_spacing">Screen edge spacing</string>
+    <string name="slider_shortcuts_height">Shortcuts menu height</string>
+    <string name="slider_tabs_panel_height">Tabs panel height</string>
+    <string name="settings_language_title">Language</string>
+    <string name="lang_system">System</string>
+    <string name="lang_en">English</string>
+    <string name="lang_fr">Français</string>
+
+    <!-- tuto (4 steps, first launch) -->
+    <string name="btn_replay_tuto">Replay tutorial</string>
+    <string name="tuto_done">Got it</string>
+    <string name="tuto_step2_title">Choosing a ball</string>
+    <string name="tuto_step2_body">The round \"Ball\" button opens your list of balls — tap one to use it.</string>
+    <string name="tuto_step3_title">Resizing ball, brush, eraser</string>
+    <string name="tuto_step3_body">Drag up or down on the Ball, Brush and Eraser buttons to change their size.</string>
+    <string name="tuto_step5_title">Placing an obstacle or effect</string>
+    <string name="tuto_step5_body">A tap places the shape right away at its default size — without letting go, drag to make it bigger.</string>
+    <string name="tuto_step4_title">The arrow</string>
+    <string name="tuto_step4_body">The arrow grabs the ball to move it, and edits an obstacle or effect already placed (move, resize, delete).</string>
+    <string name="tuto_step_scroll_title">More colors</string>
+    <string name="tuto_step_scroll_body">Drag your finger up or down on the color swatches to scroll through the whole palette.</string>
+
+    <!-- export panel -->
+    <string name="export_title">Export</string>
+    <string name="export_quality_label">Image quality</string>
+    <string name="quality_screen">Screen</string>
+    <string name="quality_high">High (2×)</string>
+    <string name="quality_very_high">Very high (3×)</string>
+    <string name="export_include_label">Include in export</string>
+    <string name="toggle_ball_export">Ball</string>
+    <string name="toggle_obstacles_export">Obstacles</string>
+    <string name="my_artworks_title">My artworks (local)</string>
+    <string name="caption_new">New</string>
+    <string name="caption_save">Save</string>
+    <string name="caption_export">Export</string>
+    <string name="no_saved_artworks">No saved artworks</string>
+    <string name="btn_open">Open</string>
+    <string name="toast_exported_gallery">Exported to gallery</string>
+    <string name="toast_export_failed">Export failed</string>
+    <string name="toast_export_failed_reason">Export failed: %1$s</string>
+
+    <!-- content descriptions -->
+    <string name="cd_menu">Open menu (all settings)</string>
+    <string name="cd_undo">Undo last action</string>
+    <string name="cd_redo">Redo undone action</string>
+    <string name="cd_hide_ui">Show/hide interface</string>
+    <string name="cd_switch_side">Move control bar to left/right</string>
+    <string name="cd_ball_size">Ball size — drag up/down to adjust (long-press to choose bounce type)</string>
+    <string name="default_bille_name">Ball %1$d</string>
+    <string name="default_pinceau_name">Brush %1$d</string>
+    <string name="slider_pinceau_width">Trail width</string>
+    <string name="label_pinceau_color">Brush color</string>
+    <string name="toggle_pinceau_melange">Blending active (otherwise live mixer color)</string>
+    <string name="btn_apply_bille">Apply to the active ball</string>
+    <string name="btn_delete_bille">Delete this ball</string>
+    <string name="slider_ball_radius">Ball size</string>
+    <string name="slider_icon_scale">Picker icon size</string>
+    <string name="label_icon_scale_section">Appearance in the picker</string>
+    <string name="label_ball_color">Ball color</string>
+    <string name="label_bille_concept">Concept</string>
+    <string name="concept_defaut">Default</string>
+    <string name="concept_arc_en_ciel">Rainbow</string>
+    <string name="concept_psychedelique">Psychedelic</string>
+    <string name="concept_comete">Comet</string>
+    <string name="concept_comete_arcenciel">Rainbow comet</string>
+    <string name="concept_rebondissante">Bouncy</string>
+    <string name="toggle_bille_names_visible">Show ball names</string>
+    <string name="quick_bille_new_title">New ball</string>
+    <string name="quick_bille_edit_title">Edit ball</string>
+    <string name="btn_create_bille_quick">Create</string>
+    <string name="btn_save_bille_quick">Save</string>
+    <string name="cd_trail_width">Trail thickness — drag up/down to adjust</string>
+    <string name="cd_construction_tools">Construction tools — long-press to choose</string>
+    <string name="cd_effects">Effects (planet, accelerator, portal) — long-press to choose</string>
+    <string name="cd_eraser">Eraser — long-press to choose (paint or obstacles)</string>
+    <string name="cd_select">Select / move an obstacle</string>
+    <string name="cd_construction_visibility">Show/hide the construction layer</string>
+    <string name="cd_open_palette">Open the color palette</string>
+    <string name="cd_bezier">Bezier (2-point editable curve)</string>
+    <string name="cd_trampoline">Trampoline (strong bounce, even on a non-bouncy ball)</string>
+    <string name="cd_wall">Wall (segment)</string>
+    <string name="cd_bumper">Bumper (round)</string>
+    <string name="cd_triangle">Triangle (flipper)</string>
+    <string name="cd_rectangle">Rectangle</string>
+    <string name="cd_ellipse">Ellipse (deformable)</string>
+    <string name="cd_portal">Portal (teleports the ball)</string>
+    <string name="cd_planet">Planet (gravity + orbit)</string>
+    <string name="cd_accelerator">Accelerator (speed gauge)</string>
+    <string name="cd_antiplanet">Anti-planet (repulsion)</string>
+    <string name="cd_eraser_paint">Paint eraser — drag to adjust size</string>
+    <string name="cd_eraser_obstacles">Obstacle eraser — drag to adjust size</string>
+    <string name="cd_pause">Pause / play</string>
+</resources>

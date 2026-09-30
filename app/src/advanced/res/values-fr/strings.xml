@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- cf. values/strings.xml (non localisé, main) — même correction ici :
+         sans cette entrée, le label français retombait sur "KidOrb" hérité
+         de main/values-fr, malgré la surcharge non-localisée. -->
+    <string name="app_name">InkOrb</string>
+</resources>

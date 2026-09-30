@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône concept bille : psychédélique — cercles concentriques contrastés,
+     pas de tint appliqué (cf. buildBilleCell). Réglages liés : aucun pour
+     l'instant (2026-08-25, purement décorative en attendant de préciser le
+     comportement). 2026-08-25, rapporté : "pas encore des balles" — même
+     principe que billeSphereDrawable (clair haut-gauche → sombre bas-droite),
+     en dégradé radial superposé plutôt qu'en teinte de base. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path android:fillColor="#FFE91E63" android:pathData="M12,3a9,9 0 1,0 0.001,0z" />
+    <path android:fillColor="#FF00BCD4" android:pathData="M12,6a6,6 0 1,0 0.001,0z" />
+    <path android:fillColor="#FFFFEB3B" android:pathData="M12,9a3,3 0 1,0 0.001,0z" />
+    <path android:pathData="M12,3a9,9 0 1,0 0.001,0z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="8"
+                android:centerY="8"
+                android:gradientRadius="15"
+                android:startColor="#66FFFFFF"
+                android:endColor="#4D000000" />
+        </aapt:attr>
+    </path>
+</vector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nom de l'app pour la variante "advanced" — surcharge celui de
+         values/strings.xml (main), qui reste "KidOrb" pour la variante
+         "kid" par défaut. Pas de traduction distincte : nom propre. -->
+    <string name="app_name">InkOrb</string>
+</resources>

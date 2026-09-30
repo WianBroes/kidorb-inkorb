@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône trampoline (2026-08-29) : même principe que ic_limite (ligne entre
+     2 points, obstacle) mais en rose vif (#FFE91E63, cf. couleur de rendu
+     de Obstacle.Ligne.trampoline dans BallCanvasView) + petite flèche de
+     rebond au-dessus pour signaler "ça propulse", même sans lire le nom. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFE91E63"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M5,19L19,5" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M5,19m-2.5,0a2.5,2.5 0,1,0 5,0a2.5,2.5 0,1,0 -5,0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M19,5m-2.5,0a2.5,2.5 0,1,0 5,0a2.5,2.5 0,1,0 -5,0" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFEB3B"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M8,10 L11,4 L14,10" />
+</vector>

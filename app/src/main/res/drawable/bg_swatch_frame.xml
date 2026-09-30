@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cadre clair autour de chaque pastille : rend le noir et les vides
+     visibles sur le fond sombre du panneau -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <stroke
+        android:width="2dp"
+        android:color="#66FFFFFF" />
+</shape>

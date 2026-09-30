@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : ligne (2 points) — outil qui crée un OBSTACLE, la ligne entre
+     les 2 points est verte (2026-08-11, demande explicite : "ajouter du
+     vert dans les icônes qui font des obstacles, la ligne entre les 2
+     points doit être verte") — même vert que les autres icônes liées aux
+     obstacles (#FF00E676). Points d'extrémité restés blancs (repères,
+     pas la ligne elle-même). Pas de android:tint (écraserait le vert). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FF00E676"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M5,19L19,5" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M5,19m-2.5,0a2.5,2.5 0,1,0 5,0a2.5,2.5 0,1,0 -5,0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M19,5m-2.5,0a2.5,2.5 0,1,0 5,0a2.5,2.5 0,1,0 -5,0" />
+</vector>

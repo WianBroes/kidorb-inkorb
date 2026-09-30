@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : mur (segment libre) — crayon qui crée un OBSTACLE, son tracé
+     est vert (2026-08-11, demande explicite : "ajouter du vert dans les
+     icônes qui font des obstacles... le tracé du crayon") — même vert que
+     les autres icônes liées aux obstacles (#FF00E676). Le crayon lui-même
+     reste blanc, seule la trace qu'il laisse est verte. Pas de
+     android:tint (écraserait le vert). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:strokeColor="#FF00E676"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M1,22.5L4,19.5" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M3,17.25V21h3.75L17.81,9.94l-3.75,-3.75L3,17.25zM20.71,7.04c0.39,-0.39 0.39,-1.02 0,-1.41l-2.34,-2.34c-0.39,-0.39 -1.02,-0.39 -1.41,0l-1.83,1.83l3.75,3.75L20.71,7.04z" />
+</vector>

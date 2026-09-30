@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : gomme des obstacles (2026-08-11, demande explicite : "fait une
+     autre gomme pareil mais la couleur est verte comme ça on comprend que
+     c'est pour les obstacles") — même tracé de gomme que ic_gomme.xml
+     (svgrepo.com/download/267996/eraser.svg), tache VERTE au lieu de rouge
+     — même vert que celui utilisé pour dessiner les obstacles à l'écran
+     (0xFF00E676, cf. BallCanvasView.onDraw/limitePaint), pour que la
+     couleur soit cohérente avec ce que ce mode efface réellement. Pas de
+     android:tint (écraserait la couleur de la tache, cf. commentaire de
+     ic_gomme.xml). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <path
+        android:fillColor="#FF00E676"
+        android:pathData="M60,430m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M139.471,181.549L18.389,302.631C6.53,314.489,0,330.255,0,347.025s6.53,32.535,18.389,44.394l102.084,102.084H246.41 l102.507-102.507L139.471,181.549z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M493.611,157.515L372.952,36.856c-24.477-24.478-64.308-24.479-88.789,0L163.082,157.938l209.447,209.447L493.61,246.304 C505.47,234.444,512,218.679,512,201.909C512,185.139,505.47,169.373,493.611,157.515z" />
+</vector>

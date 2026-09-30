@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : bouchon/obstacle rond — reste blanc, fin liseré vert à
+     l'EXTÉRIEUR de la forme (2026-08-11, demande explicite : "je les veux
+     blancs pareil mais avec une fine ligne verte sur l'extérieur de la
+     forme pour qu'on identifie bien" — même principe que Ligne/Mur, même
+     vert #FF00E676). Pas de android:tint (écraserait le vert). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FF00E676"
+        android:strokeWidth="1.2"
+        android:pathData="M12,2.7a9.3,9.3 0,1,0 0,18.6a9.3,9.3 0,1,0 0,-18.6z" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2.5"
+        android:pathData="M12,4a8,8 0,1,0 0,16a8,8 0,1,0 0,-16z" />
+</vector>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : gomme — tracé repris tel quel de svgrepo.com/download/267996/eraser.svg
+     (2026-08-11, lien fourni directement par l'utilisateur), + une tache de
+     peinture colorée qui dépasse derrière (demande explicite : "ajoute de
+     la couleur dedans comme ça on comprend que ça sert à effacer la
+     peinture"). PAS de android:tint ici (2026-08-11, contrairement aux
+     autres icônes du set) : un tint écraserait la couleur de la tache en
+     blanc comme le reste — chaque path porte sa propre couleur en dur. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <!-- tache de peinture : dessinée AVANT la gomme (donc en dessous),
+         seule la partie qui dépasse du contour de la gomme reste visible —
+         effet "la gomme est en train de recouvrir/effacer la tache". -->
+    <path
+        android:fillColor="#FFE53935"
+        android:pathData="M60,430m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M139.471,181.549L18.389,302.631C6.53,314.489,0,330.255,0,347.025s6.53,32.535,18.389,44.394l102.084,102.084H246.41 l102.507-102.507L139.471,181.549z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M493.611,157.515L372.952,36.856c-24.477-24.478-64.308-24.479-88.789,0L163.082,157.938l209.447,209.447L493.61,246.304 C505.47,234.444,512,218.679,512,201.909C512,185.139,505.47,169.373,493.611,157.515z" />
+</vector>

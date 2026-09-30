@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icône : portail façon Portal (2026-08-11) — 2 disques pleins,
+     rouge et bleu, liserés blancs, séparés (comme les 2 disques réels
+     posés sur la toile). Pas de android:tint (écraserait les 2
+     couleurs), même leçon que ic_gomme/ic_obstacle. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFE53935"
+        android:pathData="M6.5,12m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="#FF2196F3"
+        android:pathData="M17.5,12m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M6.5,12m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M17.5,12m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+</vector>

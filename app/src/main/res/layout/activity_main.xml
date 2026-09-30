@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.wian.kidorb.BallCanvasView
+        android:id="@+id/canvas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- version : repère discret en haut à gauche (confusion vieux/nouveau APK).
+         marginStart décalé après btn_menu (36dp + 10dp) — sinon le texte
+         démarre pile sous le bouton et les deux se chevauchent (repéré sur
+         Fairphone ET Huawei P30 Lite, 2026-09-03). -->
+    <TextView
+        android:id="@+id/version_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="12dp"
+        android:textColor="#55FFFFFF"
+        android:textSize="11sp" />
+
+    <!-- bouton menu : sorti de la barre et fixé en haut à gauche de l'écran
+         (2026-08-11, demande explicite) — ne bouge plus avec la bascule
+         gauche/droite de la barre de contrôles, contrairement à avant. -->
+    <ImageView
+        android:id="@+id/btn_menu"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_round_btn"
+        android:contentDescription="@string/cd_menu"
+        android:padding="8dp"
+        android:src="@drawable/ic_menu" />
+
+    <!-- cluster de contrôles : bascule côté + masquage UI (toujours visibles),
+         pause, onglets, raccourcis couleur — tout se déplace ensemble d'un
+         bord à l'autre de l'écran (voir applyControlsSide dans MainActivity).
+         ConstraintLayout dédié (topRow + controlsCluster uniquement — reste
+         du root inchangé) : sur un écran plus court que la référence
+         Fairphone, controlsCluster (FrameLayout, gravity="bottom", hauteur
+         wrap_content) grimpait au-dessus de Y=0 et chevauchait topRow, sans
+         qu'aucun calcul dynamique en Kotlin ne parvienne à le corriger de
+         façon fiable (mesuré sur Huawei P30 Lite, 2026-09-03). La contrainte
+         topToBottomOf + hauteur 0dp rend le "jamais de chevauchement"
+         garanti par construction plutôt que calculé. -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- undo / redo / œil : fixes tout en haut à droite -->
+        <LinearLayout
+            android:id="@+id/topRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/btn_undo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_undo"
+                android:padding="8dp"
+                android:src="@drawable/ic_undo" />
+
+            <ImageView
+                android:id="@+id/btn_redo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_redo"
+                android:padding="8dp"
+                android:src="@drawable/ic_redo" />
+
+            <ImageView
+                android:id="@+id/btn_hide_ui"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_hide_ui"
+                android:padding="8dp"
+                android:src="@drawable/ic_eye" />
+        </LinearLayout>
+
+        <!-- barre minimale ancrée en bas : réglages rapides (balle, pinceau par
+             glissé), bouton menu, raccourcis couleur défilables tout en bas.
+             layout_height=0dp (match_constraint) : ne peut structurellement
+             jamais dépasser l'espace entre le bas de topRow et le bas de
+             l'écran — applyControlsSide() (MainActivity) pose les contraintes
+             horizontales (bascule gauche/droite) en ConstraintLayout.LayoutParams. -->
+        <!-- clickable retiré le 2026-09-04 : controlsCluster occupe TOUJOURS
+             toute la hauteur entre topRow et le bas de l'écran (contrainte
+             ci-dessous, nécessaire pour garantir zéro chevauchement — cf.
+             commentaire plus haut), mais son contenu réel (tabbar, qui a lui
+             son propre clickable + measure() sur sa taille naturelle) peut
+             être plus court que cette hauteur. Avec clickable ici, l'espace
+             vide EN DESSOUS du tabbar (visible sur écran haut type Fairphone,
+             agrandi par la remontée du mélangeur à 264dp) bloquait le dessin
+             comme un "fantôme" — signalé par Wian : "on peut pas dessiner là
+             où est 'supposée' être la barre de raccourcis, comme si elle
+             devait être plus grande". tabbar reste clickable, donc son
+             espace RÉELLEMENT occupé continue de bloquer le dessin, comme
+             avant. -->
+        <LinearLayout
+            android:id="@+id/controlsCluster"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical"
+            android:gravity="end"
+            app:layout_constraintTop_toBottomOf="@id/topRow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- ⇄ dissocié de la barre : juste au-dessus, sans le cadre sombre -->
+            <ImageView
+                android:id="@+id/btn_switch_side"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_switch_side"
+                android:padding="8dp"
+                android:src="@drawable/ic_switch_side" />
+
+            <!-- barre minimale : menu, raccourcis couleur, pinceau, boule tout en
+                 bas. layout_height=0dp + weight=1 : prend tout l'espace restant
+                 sous btn_switch_side, à l'intérieur de la hauteur déjà bornée par
+                 controlsCluster — permet au ScrollView de couleurs plus bas de se
+                 comprimer proprement sur écran court au lieu de déborder. -->
+            <LinearLayout
+                android:id="@+id/tabbar"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_palette"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/btn_balle"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_ball_size"
+                android:padding="10dp"
+                android:src="@drawable/ic_balle" />
+
+            <ImageView
+                android:id="@+id/btn_pinceau"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_trail_width"
+                android:padding="10dp"
+                android:src="@drawable/ic_pinceau" />
+
+            <ImageView
+                android:id="@+id/btn_obstacle"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_construction_tools"
+                android:padding="10dp"
+                android:src="@drawable/ic_obstacle" />
+
+            <!-- sous-menu obstacle : apparaît au long-press (visibility GONE par défaut),
+                 positionné dynamiquement du côté OPPOSÉ de la barre -->
+
+            <!-- effets : Portail/Planète/Accélérateur — bouton dédié, séparé
+                 des formes (2026-08-13, demande explicite). -->
+            <ImageView
+                android:id="@+id/btn_effets"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_effects"
+                android:padding="10dp"
+                android:src="@drawable/ic_effets" />
+
+            <!-- sous-menu effets : apparaît au long-press (visibility GONE par défaut) -->
+
+            <!-- gomme : bouton principal (appui long = choisir peinture/obstacles),
+                 dans les raccourcis — même principe que le multi-outil obstacle -->
+            <ImageView
+                android:id="@+id/btn_gomme"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_eraser"
+                android:padding="10dp"
+                android:src="@drawable/ic_gomme" />
+
+            <!-- sous-menu gomme : apparaît au long-press (visibility GONE par défaut) -->
+
+            <ImageView
+                android:id="@+id/btn_select"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_select"
+                android:padding="10dp"
+                android:src="@drawable/ic_select" />
+
+            <ImageView
+                android:id="@+id/btn_construction_eye"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_construction_visibility"
+                android:padding="10dp"
+                android:src="@drawable/ic_eye" />
+
+            <!-- raccourcis rapides : couleurs de la palette, défilement haut/bas.
+                 layout_height=0dp + weight=1 (au lieu de 264dp fixe) : prend
+                 l'espace restant dans tabbar après les boutons fixes et la
+                 palette — sur écran court, se comprime plutôt que de pousser
+                 palette/dernières couleurs hors de l'espace disponible ; sur
+                 écran haut (Fairphone), le surplus reste juste inutilisé
+                 (identique au rendu 264dp d'avant). -->
+            <ScrollView
+                android:id="@+id/quickColorsScroll"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/quickColors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
+
+            <!-- Palette : ouvre directement l'onglet Palette du menu
+                 (2026-08-11, demande explicite : "faire le lien direct avec
+                 le menu palette, quand tap dessus ça l'ouvre" — repositionné
+                 en bas de la barre sur demande explicite suivante). -->
+            <ImageView
+                android:id="@+id/btn_palette"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_round_btn"
+                android:contentDescription="@string/cd_open_palette"
+                android:padding="10dp"
+                android:src="@drawable/ic_palette" />
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- sous-menu obstacle : sort HORIZONTALEMENT du bouton, côté opposé -->
+    <LinearLayout
+        android:id="@+id/submenu_obstacle"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_palette"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/btn_bezier"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_bezier"
+            android:padding="8dp"
+            android:src="@drawable/ic_limite" />
+
+        <!-- Trampoline (2026-08-29, demande explicite) : même geste/forme que
+             Bézier (Obstacle.Ligne), rebond fixe indépendant de la bille. -->
+        <ImageView
+            android:id="@+id/btn_trampoline"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_trampoline"
+            android:padding="8dp"
+            android:src="@drawable/ic_trampoline" />
+
+        <ImageView
+            android:id="@+id/btn_mur"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_wall"
+            android:padding="8dp"
+            android:src="@drawable/ic_crayon" />
+
+        <ImageView
+            android:id="@+id/btn_bouchon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_bumper"
+            android:padding="8dp"
+            android:src="@drawable/ic_bouchon" />
+
+        <ImageView
+            android:id="@+id/btn_triangle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_triangle"
+            android:padding="8dp"
+            android:src="@drawable/ic_triangle" />
+
+        <!-- Rectangle : même principe que les autres formes (2026-08-11,
+             demande explicite : "pouvoir faire des rectangles sur le même
+             principe que les autres formes"). -->
+        <ImageView
+            android:id="@+id/btn_rectangle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_rectangle"
+            android:padding="8dp"
+            android:src="@drawable/ic_rectangle" />
+
+        <!-- Ellipse : comme le Bouchon mais rx/ry indépendants, déformable
+             (2026-08-12, demande explicite). Placée juste après les autres
+             formes (2026-08-13, demande explicite : "j'aimerais qu'il soit
+             la suite des autres formes") — Portail/Planète/Accélérateur ont
+             leur propre bouton Effets dédié (2026-08-13), ce ne sont pas des
+             formes mais des « modificateurs » de la bille. -->
+        <ImageView
+            android:id="@+id/btn_ellipse"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_ellipse"
+            android:padding="8dp"
+            android:src="@drawable/ic_ellipse" />
+
+    </LinearLayout>
+
+    <!-- sous-menu bille : liste des billes créées dans l'onglet Bille Setup
+         (2026-08-20, demande explicite : "un menu bille... quand on tap
+         dessu, ca ouvre une liste d'outil... des billes differente" — puis
+         "je veux ... avoir tout les reglages actuels mais par billes", donc
+         plus de 3 variantes fixes : contenu généré dynamiquement par
+         refreshBalleSubmenu() à partir de billeProfiles). 2026-08-20,
+         précisé ensuite : "le menu avec le choix des billes sur un tap
+         plutot que en lassant appuyer" — tap court ouvre/ferme cette liste
+         (l'onglet Balle passe à l'appui long). Hauteur wrap_content (pas
+         36dp fixe comme les autres sous-menus icône-seule) : chaque entrée
+         montre le nom de la bille sous l'icône, sur 2 lignes si besoin. -->
+    <LinearLayout
+        android:id="@+id/submenu_balle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_palette"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="6dp"
+        android:visibility="gone" />
+
+    <!-- sous-menu effets : les « modificateurs » qui agissent sur la bille —
+         Portail, Planète, Accélérateur (2026-08-13, demande explicite : "un
+         autre bouton dans le menu pour les effets... et comme ça on
+         récupère le bouton boule comme avant" — bouton dédié séparé du
+         bouton Balle, qui retrouve son glissé de taille d'origine). Même
+         principe que submenu_obstacle (sort horizontalement du bouton,
+         presse-maintien). -->
+    <LinearLayout
+        android:id="@+id/submenu_effets"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_palette"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:visibility="gone">
+
+        <!-- Portail façon Portal : 2 disques liés (rouge/bleu) qui
+             téléportent la bille (2026-08-11, demande explicite). -->
+        <ImageView
+            android:id="@+id/btn_portail"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_portal"
+            android:padding="8dp"
+            android:src="@drawable/ic_portail" />
+
+        <!-- Planète : noyau solide + champ gravitationnel (2026-08-11, demande explicite). -->
+        <ImageView
+            android:id="@+id/btn_planete"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_planet"
+            android:padding="8dp"
+            android:src="@drawable/ic_planete" />
+
+        <!-- Accélérateur : zone non solide, jauge réglable (flèche, appui
+             maintenu) qui accélère (vert, vers le haut) ou ralentit (rouge,
+             vers le bas) la bille qui la traverse (2026-08-12, demande explicite). -->
+        <ImageView
+            android:id="@+id/btn_accelerateur"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_accelerator"
+            android:padding="8dp"
+            android:src="@drawable/ic_accelerateur" />
+
+        <!-- Anti-Planète : inverse de Planète, même noyau + champ mais
+             repousse au lieu d'attirer (2026-08-13, demande explicite :
+             "exactement le même design mais avec une autre couleur, et
+             repousse la balle au lieu de l'attirer"). -->
+        <ImageView
+            android:id="@+id/btn_planete_inverse"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_antiplanet"
+            android:padding="8dp"
+            android:src="@drawable/ic_planete_inverse" />
+
+    </LinearLayout>
+
+    <!-- sous-menu gomme : 2 outils séparés (peinture / obstacles), même
+         principe que le sous-menu obstacle. La gomme obstacles est
+         TOUJOURS locale (2026-08-11, demande explicite) — l'ancienne 3ᵉ
+         variante "obstacles locale" (2026-08-10) a fusionné avec celle-ci,
+         devenue redondante une fois la suppression par tap retirée. -->
+    <LinearLayout
+        android:id="@+id/submenu_gomme"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_palette"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/btn_gomme_peinture"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_eraser_paint"
+            android:padding="8dp"
+            android:src="@drawable/ic_gomme" />
+
+        <ImageView
+            android:id="@+id/btn_gomme_obstacles"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_round_btn"
+            android:contentDescription="@string/cd_eraser_obstacles"
+            android:padding="8dp"
+            android:src="@drawable/ic_obstacle" />
+
+    </LinearLayout>
+
+    <!-- 2026-08-21, demande explicite : "pour le pinceau il faudrait que
+         quand on tap dessus alors qu'il est deja selectionner ca, ouvre un
+         menu, comme le style pour les billes avec dedant des tailles
+         predefinie" — sous-menu de tailles prédéfinies (contenu peuplé une
+         fois en Kotlin, cf. buildTailleCell), complément rapide au glissé
+         précis existant, pas un remplacement. L'équivalent gomme
+         (submenu_gomme_taille) a été retiré le 2026-08-30 : le menu de
+         type gomme s'ouvre désormais directement par tap (cf.
+         MainActivity.attachTapToggleMenu), le réglage de taille reste
+         accessible par le glissé direct sur l'icône uniquement. -->
+    <LinearLayout
+        android:id="@+id/submenu_pinceau_taille"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_palette"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="6dp"
+        android:visibility="gone" />
+
+    <!-- panneau de menu partagé : même endroit et même taille pour
+         les 4 onglets (le contenu change dans le même cadre — charte uniforme) -->
+    <FrameLayout
+        android:id="@+id/panel_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="70dp"
+        android:background="@drawable/bg_palette"
+        android:padding="12dp"
+        android:clickable="true"
+        android:visibility="gone" />
+    <!-- pause : fixe en haut à gauche, juste à côté du hamburger, même
+         dimension (36dp) — ne suit plus la bascule gauche/droite du cluster
+         (demande explicite, 2026-09-03 ; remplace le placement en bas côté
+         opposé au cluster du 2026-08-20). marginStart = 10dp (marge écran,
+         comme btn_menu) + 36dp (largeur btn_menu) + 6dp (gap, cohérent avec
+         les espacements de topRow). -->
+    <ImageView
+        android:id="@+id/pause_btn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="52dp"
+        android:background="@drawable/bg_round_btn"
+        android:contentDescription="@string/cd_pause"
+        android:padding="8dp"
+        android:src="@drawable/ic_play" />
+</FrameLayout>
