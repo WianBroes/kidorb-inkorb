@@ -25,8 +25,8 @@ android {
         // visible dans l'app — évite de confondre vieux et nouvel APK).
         // Commune aux 2 variantes — pas de raison
         // de les faire diverger, même base de code.
-        versionCode = 508
-        versionName = "v508 · 2026-09-11"
+        versionCode = 509
+        versionName = "v509 · 2026-10-03"
     }
 
     compileOptions {
@@ -102,7 +102,18 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            // R8 (le rétrécisseur d'AGP) : activé depuis la v509. F-Droid le
+            // vérifie par le marqueur ~~R8 de classes.dex et le signale dans son
+            // rapport de qualité quand il manque. Il retire le code jamais
+            // appelé, réduit et obfusque — d'où des APK plus légers.
+            // Dépendances du projet : AndroidX seulement, aucune réflexion ;
+            // les règles de bibliothèques arrivent par leurs consumer rules.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
 
